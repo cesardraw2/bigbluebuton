@@ -10,7 +10,7 @@ RUN dpkg-reconfigure locales
 # Update server
 
 #Add multiverse repo
-RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" | tee -a /etc/apt/sources.list
+#RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" | tee -a /etc/apt/sources.list
 RUN apt-get -y update
 RUN apt-get -y dist-upgrade
 
@@ -48,7 +48,7 @@ COPY policy.xml /etc/ImageMagick
 RUN convert -list policy
 
 # Install API Demos
-RUN apt-get -y install bbb-demo
+##RUN apt-get -y install bbb-demo
 # Install Client Self-Check
 RUN apt-get -y install bbb-check
 
