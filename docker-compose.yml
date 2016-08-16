@@ -1,0 +1,23 @@
+#nginx:
+  #image: jwilder/nginx-proxy:latest
+  #  build: nginx/
+  #  ports:
+  #    - "80:80"
+  #  volumes:
+  #    - /var/run/docker.sock:/tmp/docker.sock
+
+bbb:
+  build: .
+  ports:
+   - "9100:80"
+  expose:
+  #- "80"
+  - "9101:9123"
+  - "9102:1935"
+  environment:
+      SERVER_NAME: meetings.draw.com
+      SERVER_SALT: c6f37448127dafc630fa56e837bee1d9fed95c2f
+      MOBILE_SALT: 03b07
+      VIRTUAL_HOST: meetings.draw.com
+      BBB_INSTALL_DEMOS: "yes"
+#  privileged: true
