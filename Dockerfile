@@ -1,6 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER Cesar Draw cesardraw@gmail.com
 ENV DEBIAN_FRONTEND noninteractive
+ENV FFMPEG_VERSION=2.3.3
 
 RUN apt-get -y update
 RUN apt-get install -y language-pack-en vim wget
