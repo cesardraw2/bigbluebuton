@@ -8,7 +8,6 @@ RUN update-locale LANG=en_US.UTF-8
 RUN dpkg-reconfigure locales
 
 # Update server
-
 #Add multiverse repo
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" | tee -a /etc/apt/sources.list
 RUN apt-get -y update
