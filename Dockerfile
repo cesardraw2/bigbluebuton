@@ -8,13 +8,14 @@ RUN update-locale LANG=en_US.UTF-8
 RUN dpkg-reconfigure locales
 
 # Update server
+
 #Add multiverse repo
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" | tee -a /etc/apt/sources.list
 RUN apt-get -y update
 RUN apt-get -y dist-upgrade
 
 #Install PPA for LibreOffice 4.4 and libsslAnchor link for: install ppa for libreoffice 44 and libssl
-RUN apt-get install software-properties-common
+RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:libreoffice/libreoffice-4-4
 RUN add-apt-repository -y ppa:ondrej/php
 
@@ -24,7 +25,7 @@ RUN echo "deb http://ubuntu.bigbluebutton.org/trusty-1-0/ bigbluebutton-trusty m
 RUN apt-get update
 
 # Install ffmpeg
-RUN apt-get install build-essential git-core checkinstall yasm texi2html libvorbis-dev libx11-dev libvpx-dev libxfixes-dev zlib1g-dev pkg-config netcat libncurses5-dev
+RUN apt-get install -y build-essential git-core checkinstall yasm texi2html libvorbis-dev libx11-dev libvpx-dev libxfixes-dev zlib1g-dev pkg-config netcat libncurses5-dev
 RUN cd /usr/local/src
 RUN if [ ! -d "/usr/local/src/ffmpeg-${FFMPEG_VERSION}" ]; then \
 		wget "http://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.bz2" \
@@ -47,9 +48,9 @@ COPY policy.xml /etc/ImageMagick
 RUN convert -list policy
 
 # Install API Demos
-RUN apt-get install bbb-demo
+RUN apt-get -y install bbb-demo
 # Install Client Self-Check
-RUN apt-get install bbb-check
+RUN apt-get -y install bbb-check
 
 # Enable WebRTC audio
 RUN bbb-conf --enablewebrtc
